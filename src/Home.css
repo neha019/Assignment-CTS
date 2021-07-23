@@ -1,0 +1,33 @@
+#textArea {
+    width: fit-content;
+    height: 100px;
+}
+
+label, #textArea, button, #textArea, #radioButton, .userInput {
+    vertical-align: middle;
+}
+
+.divBlock {
+    float: left;
+    margin-top: 50px;
+    margin-left: 50px;
+    padding-left: 10px;
+}
+
+.userInput {
+    float: right;
+    padding: 20px;
+}
+
+.userInput label {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+    padding: 5px;
+}
+
+.userInput input {
+    display: inline-block;
+    /* width: 200px; */
+    text-align: left;
+}
