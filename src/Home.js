@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button } from "reactstrap";
+import { Input, Button } from "reactstrap";
 import './Home.css';
 
 var DropDown = [];
@@ -57,14 +57,14 @@ class Home extends Component {
 
     getEvaluation = () => {
         // console.log(this.state.textAreaValue);
-        // DropDown = [];
-        // RadioButton = [];
+        DropDown = [];
+        RadioButton = [];
         obj = '';
         console.log(this.state.textAreaValue)
         this.setState({
             textAreaValue: ''
         })
-        obj = Function('return (' + this.state.textAreaValue + ')')();
+        obj = eval('(' + this.state.textAreaValue + ')');
         console.log(obj)
         // var str = this.state.textAreaValue.replace('//g', '').split('\n').map((ele, ind) => console.log(ele[ind]))
         console.log(obj.forEach(ele => console.log(ele.fieldType)))
@@ -77,15 +77,16 @@ class Home extends Component {
                 label.push(ele.label);
                 fieldType.push(ele.fieldType);
 
-                if (ele.DataSource !== undefined && ele.fieldType === 'DropDown') {
+                if (ele.DataSource !== undefined && ele.fieldType === 'select') {
                     ele.DataSource.forEach(source => DropDown.push(source))
                 }
-                if (ele.DataSource !== undefined && ele.fieldType === 'RadioButton') {
+                if (ele.DataSource !== undefined && ele.fieldType === 'radio') {
                     ele.DataSource.forEach(source => RadioButton.push(source))
                 }
 
             });
             this.setState({ textAreaValue: this.state.textAreaValue })
+            console.log(DropDown, RadioButton)
         }
 
     }
@@ -114,9 +115,28 @@ class Home extends Component {
                         {obj.map(element => (
                             <>
                                 <label id={element.label}>{element.label + ':'}</label>
-                                <input type={element.fieldType} key={element.name} id={element.name} name={element.name} onChange={this.selectradioOption}/>
 
+                                {(element.fieldType === 'select') && (
+                                    <>
+                                        <Input type={element.fieldType} name={element.name}>
+                                            {DropDown.map((option, i) => (
+                                                <option value={option} key={option[i]}>{option}</option>
+                                            ))}
+                                        </Input>
+                                    </>
+                                )}
+                                {(element.fieldType === 'text') && (
+                                    <input type={element.fieldType} id={element.name} name={element.name} onChange={this.selectradioOption} />
 
+                                )}
+                                {(element.fieldType === 'radio') && (
+                                    RadioButton.map((radio) => (
+                                        <>
+                                            <input type={element.fieldType} name={element.name} onChange={this.selectradioOption} />
+                                            {radio}
+                                        </>
+                                    ))
+                                )}
                                 <br />
                             </>
                         ))}
