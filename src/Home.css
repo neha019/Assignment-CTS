@@ -16,18 +16,18 @@ label, #textArea, button, #textArea, #radioButton, .userInput {
 
 .userInput {
     float: right;
-    padding: 20px;
+    padding: 50px;
 }
 
 .userInput label {
-    display: inline-block;
+    display: block;
     width: 140px;
     text-align: right;
     padding: 5px;
 }
 
-.userInput input {
-    display: inline-block;
-    /* width: 200px; */
+/* .userInput input {
+    display: inline;
+    width: 100px;
     text-align: left;
-}
+} */
