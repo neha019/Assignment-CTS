@@ -1,0 +1,32 @@
+[
+    {
+        "name": "userName",
+        "label": "User Name",
+        "fieldType": "text"
+    },
+    {
+        "name": "email",
+        "label": "Email",
+        "fieldType": "text"
+    },
+    {
+        "name": "city",
+        "label": "City",
+        "fieldType": "select",
+        "DataSource": [
+            "Bangalore",
+            "Mysore",
+            "Kolkata",
+            "Delhi"
+        ]
+    },
+    {
+        "name": "cityType",
+        "label": "City Type",
+        "fieldType": "radio",
+        "DataSource": [
+            "Metro",
+            "Non-Metro"
+        ]
+    }
+]
